@@ -53,4 +53,8 @@ const calculateExercises = (
   };
 };
 
-console.log(calculateExercises([3, 0, 2, 4.5, 0, 3, 1], 2));
+const args = process.argv.slice(2);
+const user_target = Number(args[0]);
+const diary = args.slice(1).map(Number);
+
+console.log(calculateExercises(diary, user_target));
