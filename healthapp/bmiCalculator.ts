@@ -1,4 +1,4 @@
-const calculateBmi = (height: number, mass: number) => {
+export const calculateBmi = (height: number, mass: number) => {
   const height_in_meters = height / 100;
 
   const bmi = mass / height_in_meters ** 2;
@@ -13,6 +13,7 @@ const calculateBmi = (height: number, mass: number) => {
   }
 
   console.log(message);
+  return message;
 };
 
 const mass: number = Number(process.argv[2]);
