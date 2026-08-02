@@ -5,8 +5,10 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
+    "noEmit": true,
     "noFallthroughCasesInSwitch": true,
     "module": "nodenext",
+    "allowImportingTsExtensions": true,
     "esModuleInterop": true
   }
 }
