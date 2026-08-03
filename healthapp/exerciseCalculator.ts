@@ -57,4 +57,4 @@ const args = process.argv.slice(2);
 const user_target = Number(args[0]);
 const diary = args.slice(1).map(Number);
 
-console.log(calculateExercises(diary, user_target));
+calculateExercises(diary, user_target);

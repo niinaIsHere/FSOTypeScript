@@ -11,7 +11,7 @@ app.get("/hello", (_req, res) => {
 
 app.get("/bmi", (req, res) => {
   const height = req.query.height;
-  const mass = req.query.mass;
+  const mass = req.query.weight;
 
   if (!height || !mass) {
     return res.status(400).send({ error: "malformatted parameters" });
@@ -36,7 +36,7 @@ app.post("/exercises", (req, res) => {
   const target = data["target"];
 
   if (!diary || !target) {
-    return res.status(400).send({ error: "missing parameters" });
+    return res.status(400).send({ error: "parameters missing" });
   }
 
   if (
@@ -49,7 +49,7 @@ app.post("/exercises", (req, res) => {
   const result = calculateExercises(diary, target);
   return res.json(result);
 });
-const PORT = 3003;
+const PORT = 3000;
 
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
