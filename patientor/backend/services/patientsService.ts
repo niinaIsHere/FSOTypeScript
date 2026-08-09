@@ -8,10 +8,15 @@ const getEntries = () => {
   return patientData.map(({ ssn, ...rest }) => rest);
 };
 
+const getPatient = (id: string) => {
+  return patientData.find((p) => p.id === id);
+};
+
 const addPatient = (entry: NewPatientEntry): NewPatientEntry => {
   const newPatientEntry = {
     id,
     ...entry,
+    entries: [],
   };
 
   patients.push(newPatientEntry);
@@ -20,5 +25,6 @@ const addPatient = (entry: NewPatientEntry): NewPatientEntry => {
 
 export default {
   getEntries,
+  getPatient,
   addPatient,
 };

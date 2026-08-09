@@ -6,6 +6,8 @@ export type Diagnosis = {
   latin?: string;
 };
 
+export interface Entry {}
+
 export type Patient = {
   id: string;
   name: string;
@@ -13,6 +15,7 @@ export type Patient = {
   ssn: string;
   gender: string;
   occupation: string;
+  entries: Entry[];
 };
 
 export const Gender = {
@@ -38,3 +41,5 @@ export interface PatientEntry extends NewPatientEntry {
 }
 
 export type PatientPreview = Omit<Patient, "ssn">;
+
+export type NonSensitivePatient = Omit<Patient, "ssn" | "entries">;

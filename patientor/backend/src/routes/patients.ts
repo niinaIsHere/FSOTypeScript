@@ -1,6 +1,6 @@
 import express from "express";
 import patientsService from "../../services/patientsService.ts";
-import type { PatientPreview } from "../types.ts";
+import type { Patient, PatientPreview } from "../types.ts";
 import parseNewPatientEntry from "../utils.ts";
 import { z } from "zod";
 
@@ -8,6 +8,11 @@ const router = express.Router();
 
 router.get("/", (_req, res) => {
   const data: PatientPreview[] = patientsService.getEntries();
+  res.send(data);
+});
+
+router.get("/:id", (req, res) => {
+  const data: Patient = patientsService.getPatient(req.params.id);
   res.send(data);
 });
 
