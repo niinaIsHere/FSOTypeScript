@@ -1,4 +1,5 @@
 import type { HealthCheckEntry } from "../../types";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 const entryBoxStyle = {
   border: "1px solid #ccc",
@@ -10,7 +11,7 @@ const HealthCheckEntry = ({ entry }: { entry: HealthCheckEntry }) => {
   return (
     <div style={entryBoxStyle}>
       <p>
-        {entry.date}, {entry.type}
+        {entry.date}, <FavoriteIcon />
       </p>
       <p>
         <em>{entry.description}</em>

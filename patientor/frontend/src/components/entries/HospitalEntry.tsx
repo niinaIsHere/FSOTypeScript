@@ -11,7 +11,7 @@ const HospitalEntry = ({ entry }: { entry: HospitalEntry }) => {
   return (
     <div style={entryBoxStyle}>
       <p>
-        {entry.date}, {entry.type} <LocalHospitalIcon />
+        {entry.date}, <LocalHospitalIcon />
       </p>
       <p>
         <em>{entry.description}</em>
