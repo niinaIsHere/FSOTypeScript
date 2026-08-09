@@ -33,7 +33,20 @@
     "ssn": "050174-432N",
     "gender": "female",
     "occupation": "Forensic Pathologist",
-    "entries": []
+    "entries": [
+      {
+        "id": "dasldksajd",
+        "date": "2000-07-07",
+        "type": "Hospital",
+        "specialist": "MD House",
+        "diagnosisCodes": ["S62.5"],
+        "description": "Doesn't remember",
+        "discharge": {
+          "date": "2024-07-07",
+          "criteria": "Thumb has healed"
+        }
+      }
+    ]
   },
   {
     "id": "d2773c6e-f723-11e9-8f0b-362b9e155667",
