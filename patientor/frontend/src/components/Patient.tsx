@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import patientService from "../services/patients";
 import diagnosisService from "../services/diagnoses";
 import { Patient, Entry, Diagnosis } from "../types";
+import EntryDetails from "./entries/EntryDetails";
 
 const PatientPage = () => {
   const { id } = useParams();
@@ -39,25 +40,9 @@ const PatientPage = () => {
       <p>occupation: {patient.occupation}</p>
       <p>date of birth: {patient.dateOfBirth}</p>
       <h3>entries</h3>
-      {patient.entries.map((entry: Entry) => {
-        return (
-          <div>
-            <p>
-              {entry.date} <em>{entry.description}</em>
-            </p>
-            <ul>
-              {entry.diagnosisCodes.map((code) => {
-                const diagnosis = findDiagnosis(code);
-                return (
-                  <li>
-                    {code} {diagnosis?.name}
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
-        );
-      })}
+      {patient.entries.map((entry: Entry) => (
+        <EntryDetails key={entry.id} entry={entry} />
+      ))}
     </div>
   );
 };

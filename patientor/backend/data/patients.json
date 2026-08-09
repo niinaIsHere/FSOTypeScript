@@ -45,6 +45,22 @@
           "date": "2024-07-07",
           "criteria": "Thumb has healed"
         }
+      },
+      {
+        "id": "asdkjdas",
+        "type": "Occupational",
+        "date": "2026-08-08",
+        "description": "Throat hurt",
+        "specialist": "Dr. Smart",
+        "employerName": "FBI"
+      },
+      {
+        "id": "lkajslaksjd",
+        "type": "HealthCheck",
+        "date": "2026-09-09",
+        "description": "Tummy hurt",
+        "specialist": "Dr. Dumb",
+        "healthCheckRating": 0
       }
     ]
   },

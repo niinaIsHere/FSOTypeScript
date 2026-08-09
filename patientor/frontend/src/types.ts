@@ -36,13 +36,16 @@ interface BaseEntry {
   date: string;
   specialist: string;
   diagnosisCodes?: Array<Diagnosis["code"]>;
+  type: string;
 }
 
-interface HospitalEntry extends BaseEntry {
+export interface HospitalEntry extends BaseEntry {
+  type: "Hospital";
   discharge: Discharge;
 }
 
-interface OccupationalHealthcareEntry extends BaseEntry {
+export interface OccupationalHealthcareEntry extends BaseEntry {
+  type: "Occupational";
   employerName: string;
   sickLeave: SickLeave;
 }
@@ -57,7 +60,7 @@ const HealthCheckRating = {
 type HealthCheckRating =
   (typeof HealthCheckRating)[keyof typeof HealthCheckRating];
 
-interface HealthCheckEntry extends BaseEntry {
+export interface HealthCheckEntry extends BaseEntry {
   type: "HealthCheck";
   healthCheckRating: HealthCheckRating;
 }
