@@ -24,11 +24,11 @@ interface BaseEntry {
   diagnosisCodes?: Array<Diagnosis["code"]>;
 }
 
-interface HospitalEntry {
+interface HospitalEntry extends BaseEntry {
   discharge: Discharge;
 }
 
-interface OccupationalHealthcareEntry {
+interface OccupationalHealthcareEntry extends BaseEntry {
   employerName: string;
   sickLeave: SickLeave;
 }

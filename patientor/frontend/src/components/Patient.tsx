@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import patientService from "../services/patients";
-import { Patient } from "../types";
+import { Patient, Entry } from "../types";
 
 const PatientPage = () => {
   const { id } = useParams();
@@ -25,6 +25,21 @@ const PatientPage = () => {
       <p>ssn: {patient.ssn}</p>
       <p>occupation: {patient.occupation}</p>
       <p>date of birth: {patient.dateOfBirth}</p>
+      <h3>entries</h3>
+      {patient.entries.map((entry: Entry) => {
+        return (
+          <div>
+            <p>
+              {entry.date} <em>{entry.description}</em>
+            </p>
+            <ul>
+              {entry.diagnosisCodes.map((code) => {
+                return <li>{code}</li>;
+              })}
+            </ul>
+          </div>
+        );
+      })}
     </div>
   );
 };
