@@ -50,8 +50,6 @@ const App = () => {
 
   return (
     <div>
-      <h2>Diaries</h2>
-
       <h3>Add a new diary</h3>
 
       <p>
@@ -179,9 +177,11 @@ const App = () => {
         <button type="submit">add</button>
       </form>
 
+      <h2>Diaries</h2>
+
       {diaries.map((d) => (
         <p key={d.id}>
-          {d.date}, {d.weather}, {d.visibility}
+          <b>{d.date}</b>: weather: {d.weather}, visibility: {d.visibility}
         </p>
       ))}
     </div>
