@@ -11,6 +11,11 @@ type Discharge = {
   criteria: string;
 };
 
+const DischargeSchema = z.object({
+  date: z.string(),
+  criteria: z.string(),
+});
+
 type SickLeave = {
   startDate: string;
   endDate: string;
@@ -25,12 +30,14 @@ interface BaseEntry {
 }
 
 interface HospitalEntry extends BaseEntry {
+  type: "Hospital";
   discharge: Discharge;
 }
 
 interface OccupationalHealthcareEntry extends BaseEntry {
+  type: "Occupational";
   employerName: string;
-  sickLeave: SickLeave;
+  sickLeave?: SickLeave;
 }
 
 const HealthCheckRating = {
@@ -77,9 +84,53 @@ export const NewEntrySchema = z.object({
   occupation: z.string(),
 });
 
+export const NewHospitalSchema = z.object({
+  type: z.literal("Hospital"),
+  date: z.string(),
+  specialist: z.string(),
+  description: z.string(),
+  discharge: DischargeSchema,
+});
+
+export const NewHealthCheckSchema = z.object({
+  type: z.literal("HealthCheck"),
+  date: z.string(),
+  specialist: z.string(),
+  description: z.string(),
+  healthCheckRating: z.union([
+    z.literal(0),
+    z.literal(1),
+    z.literal(2),
+    z.literal(3),
+  ]),
+});
+
+export const NewOccupationalSchema = z.object({
+  type: z.literal("Occupational"),
+  date: z.string(),
+  specialist: z.string(),
+  description: z.string(),
+  employerName: z.string(),
+  sickLeave: z
+    .object({
+      startDate: z.string(),
+      endDate: z.string(),
+    })
+    .optional(),
+});
+
 export type Gender = (typeof Gender)[keyof typeof Gender];
 
 export type NewPatientEntry = z.infer<typeof NewEntrySchema>;
+
+export type NewHospitalEntry = z.infer<typeof NewHospitalSchema>;
+export type NewHealthCheckEntry = z.infer<typeof NewHealthCheckSchema>;
+export type NewOccupationalEntry = z.infer<typeof NewOccupationalSchema>;
+
+export type NewEntry =
+  | NewHospitalEntry
+  | NewOccupationalEntry
+  | NewHealthCheckEntry;
 
 export interface PatientEntry extends NewPatientEntry {
   id: number;

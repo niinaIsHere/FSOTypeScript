@@ -1,5 +1,10 @@
 import patientData from "../data/patients.json" with { type: "json" };
-import type { NewPatientEntry } from "../src/types.ts";
+import type {
+  NewPatientEntry,
+  Patient,
+  NewEntry,
+  Entry,
+} from "../src/types.ts";
 import { v1 as uuid } from "uuid";
 const id = uuid();
 const patients = patientData;
@@ -9,7 +14,11 @@ const getEntries = () => {
 };
 
 const getPatient = (id: string) => {
-  return patientData.find((p) => p.id === id);
+  const patient = patientData.find((p) => p.id === id);
+  if (!patient) {
+    throw new Error("Patient not found");
+  }
+  return patient;
 };
 
 const addPatient = (entry: NewPatientEntry): NewPatientEntry => {
@@ -23,8 +32,19 @@ const addPatient = (entry: NewPatientEntry): NewPatientEntry => {
   return newPatientEntry;
 };
 
+const addEntry = (patient: Patient, entry: NewEntry): Entry => {
+  const newEntry: Entry = {
+    id: uuid(),
+    ...entry,
+  };
+
+  patient.entries.push(newEntry);
+  return newEntry;
+};
+
 export default {
   getEntries,
   getPatient,
   addPatient,
+  addEntry,
 };
