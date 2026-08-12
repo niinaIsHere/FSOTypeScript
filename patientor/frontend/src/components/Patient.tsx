@@ -44,8 +44,7 @@ const PatientPage = () => {
     } catch (error) {
       setError("Failed to add entry");
       if (axios.isAxiosError(error)) {
-        const msg =
-          error.response?.data?.error || "Healthcheck rating: Invalid input";
+        const msg = error.response?.data?.error || "Entry: Invalid input";
         setError(msg);
       } else {
         setError("Unexpected error");

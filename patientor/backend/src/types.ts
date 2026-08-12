@@ -89,6 +89,7 @@ export const NewHospitalSchema = z.object({
   date: z.string(),
   specialist: z.string(),
   description: z.string(),
+  diagnosisCodes: z.array(z.string()).optional(),
   discharge: DischargeSchema,
 });
 
@@ -97,6 +98,7 @@ export const NewHealthCheckSchema = z.object({
   date: z.string(),
   specialist: z.string(),
   description: z.string(),
+  diagnosisCodes: z.array(z.string()).optional(),
   healthCheckRating: z.union([
     z.literal(HealthCheckRating.Healthy),
     z.literal(HealthCheckRating.LowRisk),
@@ -110,6 +112,7 @@ export const NewOccupationalSchema = z.object({
   date: z.string(),
   specialist: z.string(),
   description: z.string(),
+  diagnosisCodes: z.array(z.string()).optional(),
   employerName: z.string(),
   sickLeave: z
     .object({
