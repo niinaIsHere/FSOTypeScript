@@ -98,10 +98,10 @@ export const NewHealthCheckSchema = z.object({
   specialist: z.string(),
   description: z.string(),
   healthCheckRating: z.union([
-    z.literal(0),
-    z.literal(1),
-    z.literal(2),
-    z.literal(3),
+    z.literal(HealthCheckRating.Healthy),
+    z.literal(HealthCheckRating.LowRisk),
+    z.literal(HealthCheckRating.HighRisk),
+    z.literal(HealthCheckRating.CriticalRisk),
   ]),
 });
 
