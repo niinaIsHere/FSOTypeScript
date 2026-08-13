@@ -6,7 +6,20 @@
     "ssn": "090786-122X",
     "gender": "male",
     "occupation": "New york city cop",
-    "entries": []
+    "entries": [
+      {
+        "id": "dasldksajd",
+        "date": "2000-07-07",
+        "type": "Hospital",
+        "specialist": "MD House",
+        "diagnosisCodes": ["S62.5", "M24.2"],
+        "description": "Doesn't remember",
+        "discharge": {
+          "date": "2024-07-07",
+          "criteria": "Thumb has healed"
+        }
+      }
+    ]
   },
   {
     "id": "d2773598-f723-11e9-8f0b-362b9e155667",

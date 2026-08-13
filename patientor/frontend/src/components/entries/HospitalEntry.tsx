@@ -17,6 +17,12 @@ const HospitalEntry = ({ entry }: { entry: HospitalEntry }) => {
         <em>{entry.description}</em>
       </p>
       <p>Diagnosed by {entry.specialist}</p>
+      <p>
+        Discharge: <br />
+        {entry.discharge.date}, <br />
+        Criteria: <br />
+        {entry.discharge.criteria}
+      </p>
     </div>
   );
 };

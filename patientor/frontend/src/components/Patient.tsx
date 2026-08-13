@@ -12,6 +12,7 @@ const PatientPage = () => {
   const [patient, setPatient] = useState<Patient | null>(null);
   const [diagnoses, setDiagnoses] = useState<Diagnosis[] | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const [entryFormOpen, setEntryFormOpen] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchPatient = async () => {
@@ -64,8 +65,10 @@ const PatientPage = () => {
       {patient.entries.map((entry: Entry) => (
         <EntryDetails key={entry.id} entry={entry} />
       ))}
-
-      <EntryForm onSubmit={handleAddEntry} />
+      {!entryFormOpen && (
+        <button onClick={() => setEntryFormOpen(true)}>Add New Entry</button>
+      )}
+      {entryFormOpen && <EntryForm onSubmit={handleAddEntry} />}
     </div>
   );
 };

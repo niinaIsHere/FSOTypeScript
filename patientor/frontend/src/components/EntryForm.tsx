@@ -6,7 +6,7 @@ const EntryForm = ({ onSubmit }) => {
     description: "",
     date: "",
     specialist: "",
-    diagnosisCodes: "",
+    diagnosisCodes: [],
     healthCheckRating: 0,
     discharge: {
       date: "",
@@ -63,7 +63,7 @@ const EntryForm = ({ onSubmit }) => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
-        <label>Type:</label>
+        <label>Type</label>
         <select name="type" value={formData.type} onChange={handleInputChange}>
           <option value="HealthCheck">Health Check</option>
           <option value="Hospital">Hospital</option>
@@ -71,8 +71,9 @@ const EntryForm = ({ onSubmit }) => {
         </select>
       </div>
       <div>
-        <label>Description:</label>
+        <label htmlFor="description">Description</label>
         <input
+          id="description"
           type="text"
           name="description"
           value={formData.description}
@@ -80,8 +81,9 @@ const EntryForm = ({ onSubmit }) => {
         />
       </div>
       <div>
-        <label>Date:</label>
+        <label htmlFor="date">Date</label>
         <input
+          id="date"
           type="date"
           name="date"
           value={formData.date}
@@ -89,8 +91,9 @@ const EntryForm = ({ onSubmit }) => {
         />
       </div>
       <div>
-        <label>Specialist:</label>
+        <label htmlFor="specialist">Specialist</label>
         <input
+          id="specialist"
           type="text"
           name="specialist"
           value={formData.specialist}
@@ -98,8 +101,9 @@ const EntryForm = ({ onSubmit }) => {
         />
       </div>
       <div>
-        <label>Diagnosis Codes:</label>
+        <label htmlFor="diagnosisCodes">Diagnosis Codes</label>
         <input
+          id="diagnosisCodes"
           type="text"
           name="diagnosisCodes"
           value={formData.diagnosisCodes}
@@ -108,8 +112,9 @@ const EntryForm = ({ onSubmit }) => {
       </div>
       {formData.type === "HealthCheck" && (
         <div>
-          <label>Health Check Rating:</label>
+          <label htmlFor="healthCheckRating">Health Check Rating</label>
           <input
+            id="healthCheckRating"
             type="number"
             name="healthCheckRating"
             value={formData.healthCheckRating}
@@ -119,16 +124,18 @@ const EntryForm = ({ onSubmit }) => {
       )}
       {formData.type === "Hospital" && (
         <div>
-          <label>Discharge Date:</label>
+          <label htmlFor="dischargeDate">Discharge Date</label>
           <input
+            id="dischargeDate"
             type="date"
             name="dischargeDate"
             value={formData.discharge.date}
             onChange={handleInputChange}
           />
 
-          <label>Discharge Criteria:</label>
+          <label htmlFor="dischargeCriteria">Discharge Criteria</label>
           <input
+            id="dischargeCriteria"
             type="text"
             name="dischargeCriteria"
             value={formData.discharge.criteria}
@@ -138,24 +145,27 @@ const EntryForm = ({ onSubmit }) => {
       )}
       {formData.type === "Occupational" && (
         <div>
-          <label>Employer Name:</label>
+          <label htmlFor="employerName">Employer Name</label>
           <input
+            id="employerName"
             type="text"
             name="employerName"
             value={formData.employerName || ""}
             onChange={handleInputChange}
           />
 
-          <label>Sick Leave Start Date:</label>
+          <label htmlFor="sickLeaveStartDate">Sick Leave Start Date</label>
           <input
+            id="sickLeaveStartDate"
             type="date"
             name="sickLeaveStartDate"
             value={formData.sickLeave.startDate || ""}
             onChange={handleInputChange}
           />
 
-          <label>Sick Leave End Date:</label>
+          <label htmlFor="sickLeaveEndDate">Sick Leave End Date</label>
           <input
+            id="sickLeaveEndDate"
             type="date"
             name="sickLeaveEndDate"
             value={formData.sickLeave.endDate || ""}
@@ -163,7 +173,9 @@ const EntryForm = ({ onSubmit }) => {
           />
         </div>
       )}
-      <button type="submit">Submit</button>
+      <button name="Add" type="submit">
+        Add
+      </button>
     </form>
   );
 };
