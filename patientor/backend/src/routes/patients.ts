@@ -5,7 +5,7 @@ import parseNewPatientEntry, { parseNewEntry } from "../utils.ts";
 import { z } from "zod";
 import patientData from "../../data/patients.json" with { type: "json" };
 
-const patients: Patient[] = patientData;
+const patients = patientData as Patient[];
 
 const router = express.Router();
 

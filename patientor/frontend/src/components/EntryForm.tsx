@@ -1,12 +1,17 @@
 import { useState } from "react";
+import { Entry } from "../types";
 
-const EntryForm = ({ onSubmit }) => {
+const EntryForm = ({
+  onSubmit,
+}: {
+  onSubmit: (entry: Omit<Entry, "id">) => void;
+}) => {
   const [formData, setFormData] = useState({
-    type: "HealthCheck",
+    type: "HealthCheck" as "HealthCheck" | "Hospital" | "Occupational",
     description: "",
     date: "",
     specialist: "",
-    diagnosisCodes: [],
+    diagnosisCodes: [] as string[],
     healthCheckRating: 0,
     discharge: {
       date: "",
@@ -19,7 +24,9 @@ const EntryForm = ({ onSubmit }) => {
     },
   });
 
-  const handleInputChange = (e) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
+  ) => {
     const { name, value } = e.target;
 
     if (name === "diagnosisCodes") {
@@ -55,7 +62,7 @@ const EntryForm = ({ onSubmit }) => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     onSubmit({ ...formData });
   };

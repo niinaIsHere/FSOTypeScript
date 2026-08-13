@@ -4,13 +4,13 @@ import patientService from "../services/patients";
 import diagnosisService from "../services/diagnoses";
 import { Patient, Entry, Diagnosis } from "../types";
 import EntryDetails from "./entries/EntryDetails";
-import EntryForm from "./EntryForm";
+import EntryForm from "./EntryForm.tsx";
 import axios from "axios";
 
 const PatientPage = () => {
   const { id } = useParams();
   const [patient, setPatient] = useState<Patient | null>(null);
-  const [diagnoses, setDiagnoses] = useState<Diagnosis[] | null>(null);
+  const [_diagnoses, setDiagnoses] = useState<Diagnosis[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [entryFormOpen, setEntryFormOpen] = useState<boolean>(false);
 
@@ -34,7 +34,7 @@ const PatientPage = () => {
 
   if (!patient) return <p>loading...</p>;
 
-  const handleAddEntry = async (entry) => {
+  const handleAddEntry = async (entry: Omit<Entry, "id">) => {
     try {
       const newEntry = await patientService.addEntry(id, entry);
 

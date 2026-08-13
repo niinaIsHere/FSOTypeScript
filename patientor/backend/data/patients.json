@@ -8,7 +8,7 @@
     "occupation": "New york city cop",
     "entries": [
       {
-        "id": "dasldksajd",
+        "id": "dasldksasdasdads",
         "date": "2000-07-07",
         "type": "Hospital",
         "specialist": "MD House",
@@ -65,7 +65,11 @@
         "date": "2026-08-08",
         "description": "Throat hurt",
         "specialist": "Dr. Smart",
-        "employerName": "FBI"
+        "employerName": "FBI",
+        "sickLeave": {
+          "startDate": "2026-08-08",
+          "endDate": "2026-08-09"
+        }
       },
       {
         "id": "lkajslaksjd",
